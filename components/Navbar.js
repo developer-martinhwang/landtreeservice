@@ -29,9 +29,6 @@ const useStyles = makeStyles({
   },
   logo: {
     padding: "8px",
-    '@media screen and (max-width: 960px)': {
-    
-    }
   },
   phone:{
     background: "#028e53",
@@ -41,6 +38,7 @@ const useStyles = makeStyles({
     color: "#fff",
     fontWeight: "bolder",
     '& span': {
+      color: "#fff",
       padding: "0.1em"
     },
     '&:hover': {
@@ -50,6 +48,21 @@ const useStyles = makeStyles({
   icon: {
     fontSize: "1.3em",
     color: "#028e53"
+  },
+  '@media screen and (max-width: 960px)': {
+    phone: {
+      backgroundColor:"#fff",
+      '& svg': {
+        fontSize:"1.3em",
+        color: "#028e53"
+      },
+      '& span:nth-child(2)': {
+        display: "none"
+      },
+      '&:hover': {
+        background: "none"
+      }
+    },
   }
 })
 function Navbar() {
@@ -78,7 +91,7 @@ function Navbar() {
           </ListItem>
           <ListItem>   
             <a className={classes.phone} href="tel:6479855654">
-              <span><Phone/></span>
+              <span><Phone /></span>
               <span>647-985-5654</span>
             </a>
           </ListItem>

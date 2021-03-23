@@ -28,7 +28,7 @@ function Footer(prop) {
   const classes = useStyles(prop);
   return (
     <Box className={classes.root}>
-      <Typography className={classes.copyright} variant="body1">Copyright &copy; {new Date().getFullYear()}, All Right Reserved - Landtreeservice.com</Typography>
+      <Typography className={classes.copyright} variant="body1">&copy; {new Date().getFullYear()}, All Right Reserved - Landtreeservice.com</Typography>
     </Box>
   )
 }
