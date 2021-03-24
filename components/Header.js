@@ -10,7 +10,7 @@
  */
 import React from "react";
 // material-ui core
-import {Box, Container, Paper} from "@material-ui/core";
+import {Box, Container, Paper, Button} from "@material-ui/core";
 // material-ui style
 import {makeStyles} from "@material-ui/styles";
 const useStyles = makeStyles({
@@ -52,6 +52,23 @@ const useStyles = makeStyles({
       fontSize: "1.5em"
     }
   },
+  button: {
+    display:"flex", 
+    justifyContent:"center", 
+    paddingTop:"2.8vh",
+    '& button': {
+      padding: "0.8em",
+      margin: "0 0.5em",
+      color: "#fff",
+      fontWeight: "bold"
+    },
+    '& button:nth-child(1)':{
+      backgroundColor: "#377927"
+    },
+    '& button:nth-child(2)':{
+      backgroundColor: "#792727"
+    }
+  },
   '@media screen and (max-width: 960px) and (min-width: 360px)': {
     paper: {
       padding: "10vh 1vw 6vh 1vw",
@@ -62,6 +79,9 @@ const useStyles = makeStyles({
       '& p': {
         fontSize: "1.2em"
       }
+    },
+    button: {
+      paddingTop:"1.5vh",
     }
   }
 })
@@ -74,6 +94,10 @@ function Header() {
           <Paper className={classes.paper}>
             <h4>Landtree Service Take Care of Your Tree Troubles</h4>
             <p>We know trees. Our professional tree experts are experienced in all types of tree care and removal, and we’re committed to the highest quality service. Let us help keep your property healthy and beautiful.</p>
+            <Box className={classes.button}>
+              <Button variant="contained">REQUEST A QUOTE</Button>
+              <Button variant="contained">VIEW SERVICES</Button>
+            </Box>
           </Paper>
         </Container>
       </Box>
