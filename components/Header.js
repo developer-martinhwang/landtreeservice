@@ -10,7 +10,7 @@
  */
 import React from "react";
 // material-ui core
-import {Box} from "@material-ui/core";
+import {Box, Container, Paper} from "@material-ui/core";
 // material-ui style
 import {makeStyles} from "@material-ui/styles";
 const useStyles = makeStyles({
@@ -24,20 +24,59 @@ const useStyles = makeStyles({
     backgroundSize:"cover",
     backgroundImage: `url(/backyard.jpg)`,
     backgroundPosition: "center",
-    height: "55vh",
+    height: "78vh",
     objectFit: "contain",
   },
   headerFadeBottom: {
-    height: "7.4vh",
-    backgroundImage: "linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #377927)",
-    marginTop: "-7vh"
+    height: "78vh",
+    backgroundImage: "linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #000)",
+    marginTop: "-78vh"
+  },
+  container: {
+    padding: "5vh 2vw 5vh 2vw"
+  },
+  paper: {
+    backgroundColor:"transparent",
+    minHeight: "40vh",
+    padding: "15vh 2vw 7vh 2vw",
+    zIndex: "3",
+    '& h4': {
+      color: "#fff",
+      textAlign: "center",
+      fontSize: "3.2em",
+      margin: "0"
+    },
+    '& p': {
+      color: "#fff",
+      textAlign: "center",
+      fontSize: "1.5em"
+    }
+  },
+  '@media screen and (max-width: 960px) and (min-width: 360px)': {
+    paper: {
+      padding: "10vh 1vw 6vh 1vw",
+      '& h4': {
+        fontSize: "2.2em",
+        margin: "0"
+      },
+      '& p': {
+        fontSize: "1.2em"
+      }
+    }
   }
 })
 function Header() {
   const classes = useStyles();
   return (
     <Box className={classes.root}>
-      <Box className={classes.headerImage1}/>
+      <Box className={classes.headerImage1}>
+        <Container maxWidth="md" className={classes.container}>
+          <Paper className={classes.paper}>
+            <h4>Landtree Service Take Care of Your Tree Troubles</h4>
+            <p>We know trees. Our professional tree experts are experienced in all types of tree care and removal, and we’re committed to the highest quality service. Let us help keep your property healthy and beautiful.</p>
+          </Paper>
+        </Container>
+      </Box>
       <Box className={classes.headerFadeBottom}/>
     </Box>
   )
