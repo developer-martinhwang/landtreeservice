@@ -24,37 +24,43 @@ const useStyles = makeStyles({
     justifyContent: "space-between",
     marginTop:"1em"
   },
-  socialcommunity: {
+  ul: {
     display: "flex",
   },
+  li: {
+    listStyleType:"none",
+    padding: "1vw"
+  },
   logo: {
-    padding: "8px",
+    width: "4em",
   },
   phone:{
-    background: "#028e53",
+    background: "#66b653",
     borderRadius: "5px",
     display: "flex",
     padding: "0.15em",
     color: "#fff",
-    fontWeight: "bolder",
     '& span': {
       color: "#fff",
       padding: "0.1em"
     },
     '&:hover': {
-      background: "#03ae66"
+      background: "#377927"
     }
   },
   icon: {
     fontSize: "1.3em",
-    color: "#028e53"
+    color: "#66b653",
   },
   '@media screen and (max-width: 960px)': {
     phone: {
       backgroundColor:"#fff",
       '& svg': {
-        fontSize:"1.3em",
-        color: "#028e53"
+        // fontSize:"1.3em",
+        color: "#66b653",
+      },
+      '& span:nth-child(1)': {
+        padding: "0"
       },
       '& span:nth-child(2)': {
         display: "none"
@@ -69,33 +75,33 @@ function Navbar() {
   const classes = useStyles();
   return (
     <Box className={classes.root}>
-      <Box className={classes.logo}>
-        Landtree Service
+      <Box>
+        <img className={classes.logo} src="/landtree_service_logo.png" width="100px" height="100px"/>
       </Box>
       <Box>
-        <List className={classes.socialcommunity}>
-          <ListItem>
+        <ul className={classes.ul}>
+          <li className={classes.li}>
             <a href="#">
               <Facebook className={classes.icon}/> 
             </a>
-          </ListItem>
-          <ListItem>
+          </li>
+          <li className={classes.li}>
             <a href="#">
               <Instagram className={classes.icon}/>  
             </a>
-          </ListItem>
-          <ListItem>
+          </li>
+          <li className={classes.li}>
             <a href="#">
               <Twitter className={classes.icon}/>
             </a>
-          </ListItem>
-          <ListItem>   
+          </li>
+          <li className={classes.li}>   
             <a className={classes.phone} href="tel:6479855654">
               <span><Phone /></span>
               <span>647-985-5654</span>
             </a>
-          </ListItem>
-        </List>
+          </li>
+        </ul>
       </Box>
     </Box>
   )

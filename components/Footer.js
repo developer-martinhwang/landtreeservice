@@ -18,9 +18,11 @@ const useStyles = makeStyles({
     padding: "2em 2em 1.5em 2em",
   },
   copyright: {
-    fontSize:"1.2rem",
-    "& span":{
-      color: "#304ffe"
+    fontSize:"1.5em",
+  },
+  '@media screen and (max-width: 960px)': {
+    copyright: {
+      fontSize:"0.8em",
     },
   }
 });
