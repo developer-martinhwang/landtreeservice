@@ -24,13 +24,13 @@ const useStyles = makeStyles({
     backgroundSize:"cover",
     backgroundImage: `url(/backyard.jpg)`,
     backgroundPosition: "center",
-    height: "78vh",
+    height: "80vh",
     objectFit: "contain",
   },
   headerFadeBottom: {
-    height: "78vh",
+    height: "80vh",
     backgroundImage: "linear-gradient(rgba(37, 37, 37, 0.61), #000000c2)",
-    marginTop: "-78vh"
+    marginTop: "-80vh"
   },
   container: {
     padding: "5vh 2vw 5vh 2vw"
@@ -38,18 +38,19 @@ const useStyles = makeStyles({
   paper: {
     backgroundColor:"transparent",
     minHeight: "40vh",
-    padding: "15vh 2vw 7vh 2vw",
+    padding: "8vh 2vw 7vh 2vw",
     zIndex: "3",
     '& h4': {
       color: "#fff",
       textAlign: "center",
       fontSize: "3.2em",
-      margin: "0"
+      margin: "0 0 1em 0"
     },
     '& p': {
       color: "#fff",
       textAlign: "center",
-      fontSize: "1.5em"
+      fontSize: "1.5em",
+      marginBottom: "2em"
     }
   },
   button: {
