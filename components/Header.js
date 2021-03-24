@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   },
   headerFadeBottom: {
     height: "78vh",
-    backgroundImage: "linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #000)",
+    backgroundImage: "linear-gradient(rgba(37, 37, 37, 0.61), #000000c2)",
     marginTop: "-78vh"
   },
   container: {
