@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     margin: "0",
     padding: "0",
     width: "100%",
-    height: "10vh"
+    // height: "10vh"
   },
   headerImage1: {
     backgroundSize:"cover",
@@ -74,11 +74,11 @@ const useStyles = makeStyles({
     paper: {
       padding: "10vh 1vw 6vh 1vw",
       '& h4': {
-        fontSize: "2.2em",
+        fontSize: "2.1em",
         margin: "0"
       },
       '& p': {
-        fontSize: "1.2em"
+        fontSize: "1.1em"
       }
     },
     button: {
@@ -96,7 +96,7 @@ function Header() {
             <h4>Landtree Service Take Care of Your Tree Troubles</h4>
             <p>We know trees. Our professional tree experts are experienced in all types of tree care and removal, and we’re committed to the highest quality service. Let us help keep your property healthy and beautiful.</p>
             <Box className={classes.button}>
-              <Button variant="contained">REQUEST A QUOTE</Button>
+              <Button variant="contained"><a href="#quote">REQUEST A QUOTE</a></Button>
               <Button variant="contained">VIEW SERVICES</Button>
             </Box>
           </Paper>

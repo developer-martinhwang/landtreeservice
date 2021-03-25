@@ -19,7 +19,7 @@ import {Facebook,
 const useStyles = makeStyles({
   root:{
     fontSize: "1.5em",
-    width: "90%",
+    width: "100%",
     display: "flex",
     justifyContent: "space-between",
     marginTop:"1em",
@@ -27,6 +27,7 @@ const useStyles = makeStyles({
   },
   ul: {
     display: "flex",
+    paddingRight: "1vw"
   },
   li: {
     listStyleType:"none",
@@ -56,6 +57,7 @@ const useStyles = makeStyles({
   },
   logo: {
     width: "4em",
+    paddingLeft: "2vw"
   },
   phone:{
     background: "#66b653",

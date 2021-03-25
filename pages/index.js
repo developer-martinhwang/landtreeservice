@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import Header from '../components/Header'
+import Quote from '../components/Quote'
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -16,12 +17,11 @@ export default function Home() {
         <meta name="twitter:title" content="Total Service Landscape Architecture Company - Landtree Service"></meta>
         <link rel="canonical" href="https://www.landtreeservice.ca/"/>
       </Head>
-      <Navbar/>
-      <Header/>
       <main className={styles.main}>
-       
+        <Navbar/>
+        <Header/>
+        <Quote/>
       </main>
-
       <footer className={styles.footer}>
         <Footer/>
       </footer>
