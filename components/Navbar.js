@@ -7,9 +7,9 @@
  * Revision History:
  * - March 23, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  */
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 // material-ui core
-import {Box, List, ListItem} from '@material-ui/core'
+import {Box} from '@material-ui/core'
 import {makeStyles} from '@material-ui/styles'
 // material-ui icons
 import {Facebook,
@@ -22,7 +22,8 @@ const useStyles = makeStyles({
     width: "90%",
     display: "flex",
     justifyContent: "space-between",
-    marginTop:"1em"
+    marginTop:"1em",
+    zIndex: "1",
   },
   ul: {
     display: "flex",
@@ -30,6 +31,28 @@ const useStyles = makeStyles({
   li: {
     listStyleType:"none",
     padding: "1vw"
+  },
+  showNav: {
+    display: "flex",
+    flexDirection: "column-reverse",
+    position: "fixed",
+    right: "0.5em",
+    '& li': {
+      padding: "0.1em"
+    },
+    '& li:nth-child(4)': {
+      '& a': {
+        background: "none"
+      },
+      '& span:nth-child(1)': {
+        '& svg': {
+          color: "#66b653"
+        }
+      },
+      '& span:nth-child(2)': {
+        display: "none"
+      }
+    }
   },
   logo: {
     width: "4em",
@@ -56,7 +79,6 @@ const useStyles = makeStyles({
     phone: {
       backgroundColor:"#fff",
       '& svg': {
-        // fontSize:"1.3em",
         color: "#66b653",
       },
       '& span:nth-child(1)': {
@@ -73,13 +95,23 @@ const useStyles = makeStyles({
 })
 function Navbar() {
   const classes = useStyles();
+  const [showNav, setShowNav] = useState(false);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        setShowNav(true);
+      }else{
+        setShowNav(false);
+      }
+    });
+  }, []);
   return (
     <Box className={classes.root}>
       <Box>
         <img className={classes.logo} src="/landtree_service_logo.png" width="100px" height="100px"/>
       </Box>
       <Box>
-        <ul className={classes.ul}>
+        <ul className={showNav?classes.showNav:classes.ul}>
           <li className={classes.li}>
             <a href="#">
               <Facebook className={classes.icon}/> 
