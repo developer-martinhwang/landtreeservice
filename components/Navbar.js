@@ -38,6 +38,7 @@ const useStyles = makeStyles({
     flexDirection: "column-reverse",
     position: "fixed",
     right: "0.5em",
+    top: "2.5em",
     '& li': {
       padding: "0.1em"
     },
