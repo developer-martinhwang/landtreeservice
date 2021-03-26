@@ -16,6 +16,8 @@ import {Facebook,
   Instagram,
   Twitter,
   Phone} from '@material-ui/icons'
+// utils
+import {openNewBrowserWindow} from '../components/utils/utils'
 const useStyles = makeStyles({
   root:{
     fontSize: "1.5em",
@@ -31,7 +33,10 @@ const useStyles = makeStyles({
   },
   li: {
     listStyleType:"none",
-    padding: "1vw"
+    padding: "1vw",
+    '&:hover': {
+      cursor: "pointer"
+    }
   },
   showNav: {
     display: "flex",
@@ -116,17 +121,20 @@ function Navbar() {
       <Box>
         <ul className={showNav?classes.showNav:classes.ul}>
           <li className={classes.li}>
-            <a href="#">
+            <a 
+              onClick={() => {openNewBrowserWindow("https://www.facebook.com/landtree.kang")}}>
               <Facebook className={classes.icon}/> 
             </a>
           </li>
           <li className={classes.li}>
-            <a href="#">
+            <a 
+              onClick={() => {openNewBrowserWindow("https://www.instagram.com/landtreeservice/")}}>
               <Instagram className={classes.icon}/>  
             </a>
           </li>
           <li className={classes.li}>
-            <a href="#">
+            <a 
+              onClick={() => {openNewBrowserWindow("https://twitter.com/landtreeservice")}}>
               <Twitter className={classes.icon}/>
             </a>
           </li>

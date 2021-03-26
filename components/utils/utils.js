@@ -8,3 +8,6 @@
  * - March 25, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : created
  */
+export const openNewBrowserWindow = (url) => {
+    return window.open(url)
+}
