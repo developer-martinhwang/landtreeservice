@@ -28,7 +28,6 @@ const useStyles = makeStyles({
     flexWrap: "wrap",
   },
   paper: {
-    // backgroundColor:"red",
     margin: "1em",
     width: "40em",
     minHeight: "40vh",
@@ -52,7 +51,6 @@ const useStyles = makeStyles({
         color: "#000",
         textAlign: "justify",
         fontSize: "1.2em",
-        padding: "0.5em",
     },
   },
   requestButton: {
@@ -73,13 +71,31 @@ const useStyles = makeStyles({
     display:"flex",
     justifyContent:"center",
     flexDirection:"column",
+    padding:"0 3.5em",
+    '& p': {
+      marginTop: "0",
+    }
+  },
+  contact: {
+    display: "flex",
   },
   phonenumber: {
-    background: "red"
+    width:"100%",
+    padding: "0 0 0 0.1em"
+
+  },
+  message: {
+    minHeight: "10em"
   },
   '@media screen and (max-width: 960px) and (min-width: 360px)': {
     paper: {
       padding: "2vh 2vw 2vh 2vw",
+    },
+    contact: {
+      flexWrap: "wrap",
+    },
+    form:{
+      padding:"0",
     },
   }
 })
@@ -102,47 +118,69 @@ function Quote() {
             </Paper>
             <Paper className={classes.paper}>
               <h5>The More Landtree Service The Easier Your Life</h5>
-              <Box padding="0 4em 0 4em">
+              <Box>
                 <form className={classes.form}>
-                  <MyTextField
-                    variant="outlined"
-                    margin="normal"
-                    required={true}
-                    fullWidth={true}
-                    id="name"
-                    label="Full Name"
-                    type="text"
-                    // helperText={errors.name}
-                    name="name"
-                    // value={user.name}
-                    onChange={handleChange}/>
+                  <p>
                     <MyTextField
-                      className={classes.email}
                       variant="outlined"
                       margin="normal"
                       required={true}
                       fullWidth={true}
-                      id="email"
-                      label="Email Address"
-                      type="email"
-                      // helperText={errors.email}
-                      name="email"
-                      // value={user.email}
-                      autoComplete="email"
+                      id="quote_name"
+                      label="Full Name"
+                      type="text"
+                      // helperText={errors.name}
+                      name="quote_name"
+                      // value={user.name}
                       onChange={handleChange}/>
+                  </p>
+                  <div className={classes.contact}>
+                    <p className={classes.phonenumber}>
+                      <MyTextField
+                        variant="outlined"
+                        margin="normal"
+                        required={true}
+                        fullWidth={true}
+                        id="quote_email"
+                        label="Email Address"
+                        type="email"
+                        // helperText={errors.email}
+                        name="quote_email"
+                        // value={user.email}
+                        autoComplete="email"
+                        onChange={handleChange}/>
+                    </p>
+                    <p className={classes.phonenumber}>
+                      <MyTextField
+                        variant="outlined"
+                        margin="normal"
+                        required={true}
+                        fullWidth={true}
+                        id="quote_phone_number"
+                        label="Phone Number"
+                        type="text"
+                        // helperText={errors.email}
+                        name="quote_phone_number"
+                        // value={user.email}
+                        onChange={handleChange}/>
+                    </p>
+                  </div>
+                  <p>
                     <MyTextField
-                      className={classes.phonenumber}
                       variant="outlined"
                       margin="normal"
-                      required={true}
                       fullWidth={true}
-                      id="phone_number"
-                      label="Phone Number"
+                      id="quote_message"
+                      label="How can we help you?"
                       type="text"
                       // helperText={errors.email}
-                      name="phone_number"
+                      name="quote_message"
                       // value={user.email}
+                      InputProps={{
+                        className: classes.message
+                      }}
                       onChange={handleChange}/>
+                  </p>
                   <Button
                     type="submit"
                     // fullWidth
