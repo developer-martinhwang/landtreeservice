@@ -93,17 +93,15 @@ const useStyles = makeStyles({
   checkbox: {
     display: "flex",
     '& label': {
-      marginRight: "1.5em",
       color: "#377927"
     }
   },
-  servicetype: {
+  service: {
     border: "1px solid #377927",
-    borderRadius: "5px",
-    padding: "15px",
+    borderRadius:"5px",
+    padding: "10px",
     '& legend': {
-      color: "#377927",
-      marginBottom: "1em"
+      color: "#377927"
     }
   },
   '@media screen and (max-width: 960px) and (min-width: 360px)': {
@@ -189,38 +187,40 @@ function Quote() {
                         onChange={handleChange}/>
                     </p>
                   </div>
-                  <p className={classes.servicetype}>
-                    <FormLabel component="legend">Service Type</FormLabel>
-                    <FormGroup>
-                      <div className={classes.checkbox}>
-                        <FormControlLabel
-                          control={<Checkbox onChange={handleChange} name="tree_removal" />}
-                          label="Tree removal"
-                        />
-                        <FormControlLabel
-                          control={<Checkbox onChange={handleChange} name="tree_removal" />}
-                          label="Tree pruning"
-                        />
-                        <FormControlLabel
-                          control={<Checkbox onChange={handleChange} name="tree_removal" />}
-                          label="Stump removal"
+                  <p>
+                    <div className={classes.service}>
+                      <FormLabel component="legend">Service Type</FormLabel>
+                      <FormGroup>
+                        <div className={classes.checkbox}>
+                          <FormControlLabel
+                            control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                            label="Tree removal"
                           />
-                      </div>
-                      <div className={classes.checkbox}>
-                        <FormControlLabel
-                          control={<Checkbox onChange={handleChange} name="tree_removal" />}
-                          label="Tree planting"
-                        />
-                        <FormControlLabel
-                          control={<Checkbox onChange={handleChange} name="tree_removal" />}
-                          label="Mowing lawn"
-                        />
-                        <FormControlLabel
-                          control={<Checkbox onChange={handleChange} name="tree_removal" />}
-                          label="Arborist"
-                        />
-                      </div>
-                    </FormGroup>
+                          <FormControlLabel
+                            control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                            label="Tree pruning"
+                          />
+                          <FormControlLabel
+                            control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                            label="Stump removal"
+                            />
+                        </div>
+                        <div className={classes.checkbox}>
+                          <FormControlLabel
+                            control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                            label="Tree planting"
+                          />
+                          <FormControlLabel
+                            control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                            label="Mowing lawn"
+                          />
+                          <FormControlLabel
+                            control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                            label="Arborist"
+                          />
+                        </div>
+                      </FormGroup>
+                    </div>
                   </p>
                   <p>
                     <MyTextField
