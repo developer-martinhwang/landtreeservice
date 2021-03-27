@@ -10,7 +10,7 @@
  */
 import React from "react";
 // material-ui core
-import {Box, Container, Paper, InputAdornment, Button} from "@material-ui/core";
+import {Box, Container, Paper, Button, FormGroup, FormLabel, FormControlLabel, Checkbox } from "@material-ui/core";
 // material-ui style
 import {makeStyles} from "@material-ui/styles";
 // components
@@ -20,6 +20,9 @@ const useStyles = makeStyles({
     margin: "0",
     padding: "0",
     width: "100%",
+    '& .MuiCheckbox-root':{
+      color: "#377927"
+    },
   },
   container: {
     padding: "5vh 2vw 5vh 2vw",
@@ -87,7 +90,28 @@ const useStyles = makeStyles({
   message: {
     minHeight: "10em"
   },
+  checkbox: {
+    display: "flex",
+    '& label': {
+      marginRight: "1.5em",
+      color: "#377927"
+    }
+  },
+  servicetype: {
+    border: "1px solid #377927",
+    borderRadius: "5px",
+    padding: "15px",
+    '& legend': {
+      color: "#377927",
+      marginBottom: "1em"
+    }
+  },
   '@media screen and (max-width: 960px) and (min-width: 360px)': {
+    root: {
+      '& .MuiCheckbox-root':{
+        fontSize: "0.7em"
+      },
+    },
     paper: {
       padding: "2vh 2vw 2vh 2vw",
     },
@@ -165,6 +189,39 @@ function Quote() {
                         onChange={handleChange}/>
                     </p>
                   </div>
+                  <p className={classes.servicetype}>
+                    <FormLabel component="legend">Service Type</FormLabel>
+                    <FormGroup>
+                      <div className={classes.checkbox}>
+                        <FormControlLabel
+                          control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                          label="Tree removal"
+                        />
+                        <FormControlLabel
+                          control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                          label="Tree pruning"
+                        />
+                        <FormControlLabel
+                          control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                          label="Stump removal"
+                          />
+                      </div>
+                      <div className={classes.checkbox}>
+                        <FormControlLabel
+                          control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                          label="Tree planting"
+                        />
+                        <FormControlLabel
+                          control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                          label="Mowing lawn"
+                        />
+                        <FormControlLabel
+                          control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                          label="Arborist"
+                        />
+                      </div>
+                    </FormGroup>
+                  </p>
                   <p>
                     <MyTextField
                       variant="outlined"
