@@ -116,12 +116,9 @@ const useStyles = makeStyles({
     minHeight: "10em"
   },
   service: {
-    color: "#377927",
-    border: "1px solid #377927",
-    borderRadius:"5px",
-    padding: "10px",
     '& span': {
-      color: "#377927"
+      color: "#377927",
+      fontSize: "0.9rem"
     },
     '& legend': {
       color: "#377927",
@@ -148,9 +145,6 @@ const useStyles = makeStyles({
       padding:"0",
     },
     service: {
-      color: "#377927",
-      border: "1px solid #377927",
-      borderRadius:"5px",
       '& span': {
         fontSize: "0.7em",
       },
@@ -224,45 +218,51 @@ function Quote() {
                     </p>
                   </div>
                   <p className={classes.service}>
-                    <FormLabel component="legend">Service Type</FormLabel>
-                    <FormGroup>
-                      <table>
-                        <tr>
-                          <td>
-                            <FormControlLabel
-                              control={<Checkbox onChange={handleChange} name="tree_removal" />}
-                              label="Lawn Cutting"/>
-                          </td>
-                          <td>
-                            <FormControlLabel
-                              control={<Checkbox onChange={handleChange} name="tree_removal" />}
-                              label="Interlocking"/>
-                          </td>
-                          <td>
-                            <FormControlLabel
-                              control={<Checkbox onChange={handleChange} name="tree_removal" />}
-                              label="Planting Lawn"/>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <FormControlLabel
-                              control={<Checkbox onChange={handleChange} name="tree_removal" />}
-                              label="Backyard Cleanup"/>
-                          </td>
-                          <td>
-                            <FormControlLabel
-                              control={<Checkbox onChange={handleChange} name="tree_removal" />}
-                              label="Roofing Cleanup"/>
-                          </td>
-                          <td>
-                            <FormControlLabel
-                              control={<Checkbox onChange={handleChange} name="tree_removal" />}
-                              label="Tree Service"/>
-                          </td>
-                        </tr>
-                      </table>
-                    </FormGroup>
+                    <Box  color="#377927"
+                          border = "1px solid #377927"
+                          borderRadius ="5px"
+                          padding = "10px"
+                    >
+                      <FormLabel component="legend">Service Type</FormLabel>
+                      <FormGroup>
+                        <table>
+                          <tr>
+                            <td>
+                              <FormControlLabel
+                                control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                                label="Lawn Cutting"/>
+                            </td>
+                            <td>
+                              <FormControlLabel
+                                control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                                label="Interlocking"/>
+                            </td>
+                            <td>
+                              <FormControlLabel
+                                control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                                label="Planting Lawn"/>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <FormControlLabel
+                                control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                                label="Backyard Cleanup"/>
+                            </td>
+                            <td>
+                              <FormControlLabel
+                                control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                                label="Roofing Cleanup"/>
+                            </td>
+                            <td>
+                              <FormControlLabel
+                                control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                                label="Tree Service"/>
+                            </td>
+                          </tr>
+                        </table>
+                      </FormGroup>
+                    </Box>
                   </p>
                   <p>
                     <MyTextField
