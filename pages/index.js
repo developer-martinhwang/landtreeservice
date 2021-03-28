@@ -5,6 +5,7 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import Header from '../components/Header'
 import Quote from '../components/Quote'
+import StoryCard from '../components/StoryCard'
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -20,6 +21,11 @@ export default function Home() {
       <main className={styles.main}>
         <Navbar/>
         <Header/>
+        <StoryCard
+          title="Lawn Cutting"
+          subtitle="When you get weekly grass cutting services from Landtree Service, you will appreciate your great looking property, and enjoy more time to relax."
+          image="/lawnCutting.jpg"
+        />
         <Quote/>
       </main>
       <footer className={styles.footer}>

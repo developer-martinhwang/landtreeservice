@@ -56,6 +56,32 @@ const useStyles = makeStyles({
         fontSize: "1.2em",
     },
   },
+  paper1: {
+    margin: "1em",
+    width: "40em",
+    minHeight: "40vh",
+    padding: "5vh 2.5vw 5vh 2.5vw",
+    // zIndex: "3",
+    '& h4': {
+        color: "#000",
+        textAlign: "center",
+        fontSize: "2em",
+        padding: "0.5em",
+        margin: "0 0 0.5em 0"
+    },
+    '& h5': {
+      color: "#000",
+      textAlign: "center",
+      fontSize: "1.5em",
+      padding: "0.5em",
+      margin: "0 0 0.5em 0"
+    },
+    '& p': {
+        color: "#000",
+        textAlign: "justify",
+        fontSize: "1.2em",
+    },
+  },
   requestButton: {
     display:"flex",
     justifyContent:"center",
@@ -85,23 +111,21 @@ const useStyles = makeStyles({
   phonenumber: {
     width:"100%",
     padding: "0 0 0 0.1em"
-
   },
   message: {
     minHeight: "10em"
   },
-  checkbox: {
-    display: "flex",
-    '& label': {
-      color: "#377927"
-    }
-  },
   service: {
+    color: "#377927",
     border: "1px solid #377927",
     borderRadius:"5px",
     padding: "10px",
-    '& legend': {
+    '& span': {
       color: "#377927"
+    },
+    '& legend': {
+      color: "#377927",
+      paddingBottom: "1em"
     }
   },
   '@media screen and (max-width: 960px) and (min-width: 360px)': {
@@ -110,14 +134,26 @@ const useStyles = makeStyles({
         fontSize: "0.7em"
       },
     },
-    paper: {
-      padding: "2vh 2vw 2vh 2vw",
+    container:{
+      '& div:nth-child(1)': {
+      }
+    },
+    paper1: {
+      margin: "0 2vw"
     },
     contact: {
       flexWrap: "wrap",
     },
     form:{
       padding:"0",
+    },
+    service: {
+      color: "#377927",
+      border: "1px solid #377927",
+      borderRadius:"5px",
+      '& span': {
+        fontSize: "0.7em",
+      },
     },
   }
 })
@@ -133,7 +169,7 @@ function Quote() {
   return (
     <Box className={classes.root} id="quote">
         <Container maxWidth="xl" className={classes.container}>
-            <Paper className={classes.paper}>
+            <Paper className={classes.paper1}>
               <h4>We’ll take care of your trees</h4>
               <p>Trees are typically considered an asset to your property, but a number of factors can transform these assets into liabilities. We’d love to work with you to ensure your trees are healthy, safe and beautiful and an asset to your property for many years to come.</p>
               <p>Working with trees can be dangerous. Our arborists are experienced, educated, and have the property gear to get the job done safely.</p>
@@ -187,40 +223,46 @@ function Quote() {
                         onChange={handleChange}/>
                     </p>
                   </div>
-                  <p>
-                    <div className={classes.service}>
-                      <FormLabel component="legend">Service Type</FormLabel>
-                      <FormGroup>
-                        <div className={classes.checkbox}>
-                          <FormControlLabel
-                            control={<Checkbox onChange={handleChange} name="tree_removal" />}
-                            label="Tree removal"
-                          />
-                          <FormControlLabel
-                            control={<Checkbox onChange={handleChange} name="tree_removal" />}
-                            label="Tree pruning"
-                          />
-                          <FormControlLabel
-                            control={<Checkbox onChange={handleChange} name="tree_removal" />}
-                            label="Stump removal"
-                            />
-                        </div>
-                        <div className={classes.checkbox}>
-                          <FormControlLabel
-                            control={<Checkbox onChange={handleChange} name="tree_removal" />}
-                            label="Tree planting"
-                          />
-                          <FormControlLabel
-                            control={<Checkbox onChange={handleChange} name="tree_removal" />}
-                            label="Mowing lawn"
-                          />
-                          <FormControlLabel
-                            control={<Checkbox onChange={handleChange} name="tree_removal" />}
-                            label="Arborist"
-                          />
-                        </div>
-                      </FormGroup>
-                    </div>
+                  <p className={classes.service}>
+                    <FormLabel component="legend">Service Type</FormLabel>
+                    <FormGroup>
+                      <table>
+                        <tr>
+                          <td>
+                            <FormControlLabel
+                              control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                              label="Lawn Cutting"/>
+                          </td>
+                          <td>
+                            <FormControlLabel
+                              control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                              label="Interlocking"/>
+                          </td>
+                          <td>
+                            <FormControlLabel
+                              control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                              label="Planting Lawn"/>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <FormControlLabel
+                              control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                              label="Backyard Cleanup"/>
+                          </td>
+                          <td>
+                            <FormControlLabel
+                              control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                              label="Roofing Cleanup"/>
+                          </td>
+                          <td>
+                            <FormControlLabel
+                              control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                              label="Tree Service"/>
+                          </td>
+                        </tr>
+                      </table>
+                    </FormGroup>
                   </p>
                   <p>
                     <MyTextField
