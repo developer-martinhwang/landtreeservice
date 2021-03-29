@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     },
   },
   container: {
-    padding: "5vh 2vw 5vh 2vw",
+    padding: "5vh 2vw 5vh 3vw",
     display: "flex",
     justifyContent: "center",
     flexWrap: "wrap",
@@ -121,6 +121,12 @@ const useStyles = makeStyles({
     service: {
       '& span': {
         fontSize: "0.7em",
+      },
+    },
+    paper: {
+      '& p': {
+          textAlign: "justify",
+          fontSize: "1em",
       },
     },
   }
