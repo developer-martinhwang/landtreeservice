@@ -34,46 +34,20 @@ const useStyles = makeStyles({
     margin: "1em",
     width: "40em",
     minHeight: "40vh",
-    padding: "5vh 2.5vw 5vh 2.5vw",
+    padding: "4vh 2.5vw 3vh 2.5vw",
     // zIndex: "3",
     '& h4': {
         color: "#000",
         textAlign: "center",
         fontSize: "2em",
-        padding: "0.5em",
+        // padding: "0.5em",
         margin: "0 0 0.5em 0"
     },
     '& h5': {
       color: "#000",
       textAlign: "center",
       fontSize: "1.5em",
-      padding: "0.5em",
-      margin: "0 0 0.5em 0"
-    },
-    '& p': {
-        color: "#000",
-        textAlign: "justify",
-        fontSize: "1.2em",
-    },
-  },
-  paper1: {
-    margin: "1em",
-    width: "40em",
-    minHeight: "40vh",
-    padding: "5vh 2.5vw 5vh 2.5vw",
-    // zIndex: "3",
-    '& h4': {
-        color: "#000",
-        textAlign: "center",
-        fontSize: "2em",
-        padding: "0.5em",
-        margin: "0 0 0.5em 0"
-    },
-    '& h5': {
-      color: "#000",
-      textAlign: "center",
-      fontSize: "1.5em",
-      padding: "0.5em",
+      // padding: "0.5em",
       margin: "0 0 0.5em 0"
     },
     '& p': {
@@ -161,14 +135,14 @@ function Quote() {
     // }));
   }
   return (
-    <Box className={classes.root} id="quote">
+    <Box className={classes.root}>
         <Container maxWidth="xl" className={classes.container}>
-            <Paper className={classes.paper1}>
+            <Box className={classes.paper}>
               <h4>We’ll take care of your trees</h4>
               <p>Trees are typically considered an asset to your property, but a number of factors can transform these assets into liabilities. We’d love to work with you to ensure your trees are healthy, safe and beautiful and an asset to your property for many years to come.</p>
               <p>Working with trees can be dangerous. Our arborists are experienced, educated, and have the property gear to get the job done safely.</p>
-            </Paper>
-            <Paper className={classes.paper}>
+            </Box>
+            <Box className={classes.paper} id="quote">
               <h5>The More Landtree Service The Easier Your Life</h5>
               <Box>
                 <form className={classes.form}>
@@ -223,7 +197,7 @@ function Quote() {
                           borderRadius ="5px"
                           padding = "10px"
                     >
-                      <FormLabel component="legend">Service Type</FormLabel>
+                      <legend>Service Type</legend>
                       <FormGroup>
                         <table>
                           <tr>
@@ -289,7 +263,7 @@ function Quote() {
                   </Button>
                 </form>
               </Box>
-            </Paper>
+            </Box>
         </Container>
     </Box>
   )
