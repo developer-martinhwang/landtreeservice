@@ -31,7 +31,7 @@ const useStyles = makeStyles({
         padding: "2vh 3vw",
         '@media screen and (max-width: 960px)': {
             width: "100%",
-            marginBottom: "30px",
+            // marginBottom: "30px",
             textAlign: "center"
         }
     },
