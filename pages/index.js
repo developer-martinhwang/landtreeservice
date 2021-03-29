@@ -26,6 +26,11 @@ export default function Home() {
           subtitle="When you get weekly grass cutting services from Landtree Service, you will appreciate your great looking property, and enjoy more time to relax."
           image="/lawnCutting.jpg"
         />
+         <StoryCard
+          title="Roof Cleaning up"
+          subtitle="The entire roof is cleaned with a pressure washer using low pressure and high volume."
+          image="/cleanRoof.jpg"
+        />
         <Quote/>
       </main>
       <footer className={styles.footer}>

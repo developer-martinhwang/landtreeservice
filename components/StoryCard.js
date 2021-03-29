@@ -47,8 +47,9 @@ const useStyles = makeStyles({
         }
     },
     title: {
-        fontSize: "2.7rem",
+        fontSize: "2.3rem",
         fontWeight: "bolder",
+        textAlign:"center",
         '@media screen and (max-width: 960px) and (min-width: 360px)': {
            fontSize: "1.6rem",
            padding: "0",
@@ -58,6 +59,7 @@ const useStyles = makeStyles({
     subtitle: {
         fontSize: "1.5rem",
         paddingLeft: "3px",
+        textAlign: "center",
         '@media screen and (max-width: 960px) and (min-width: 360px)': {
             fontSize: "1rem",
             padding: "0",
@@ -83,7 +85,7 @@ function StoryCard(prop) {
                 <Box className={classes.col}>
                     <Box className={classes.image} style={{backgroundImage:`url(${prop.image})`}}/>
                 </Box>
-                <Box className={classes.col}>
+                <Box className={classes.col} marginTop="3vh">
                     <Typography className={classes.title}>{prop.title}</Typography>
                     <Typography className={classes.subtitle}>{prop.subtitle}</Typography>
                 </Box>
