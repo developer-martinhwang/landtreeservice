@@ -35,19 +35,16 @@ const useStyles = makeStyles({
     width: "40em",
     minHeight: "40vh",
     padding: "4vh 2.5vw 3vh 2.5vw",
-    // zIndex: "3",
     '& h4': {
         color: "#000",
         textAlign: "center",
         fontSize: "2em",
-        // padding: "0.5em",
         margin: "0 0 0.5em 0"
     },
     '& h5': {
       color: "#000",
       textAlign: "center",
       fontSize: "1.5em",
-      // padding: "0.5em",
       margin: "0 0 0.5em 0"
     },
     '& p': {
@@ -97,7 +94,7 @@ const useStyles = makeStyles({
     '& legend': {
       color: "#377927",
       paddingBottom: "1em"
-    }
+    },
   },
   '@media screen and (max-width: 960px) and (min-width: 360px)': {
     root: {
@@ -137,37 +134,64 @@ function Quote() {
     fullName: "",
     email: "",
     phoneNumber:"",
-    lawnCutting: "",
-    interlocking: "",
+    lawn_cutting: false,
+    interlocking: false,
+    planting_lawn: false,
+    backyard_cleaning:false,
+    roof_cleaning:false,
+    tree_service:false,
     message: ""
   });
   const handleChange = (e) => {
-    const {id, value} = e.target;
-    setRequest(prevState => ({
-      ...prevState,
-      [id]: value
-    }));
+    const {id, value, type, checked} = e.target;
+    if(type === "text" || type ==="email"){
+      setRequest(prevState => ({
+        ...prevState,
+        [id]: value
+      }));
+    } 
+    if (type === "checkbox"){
+      setRequest(prevState => ({
+        ...prevState,
+        [id]: checked
+      }));
+    }
   }
   const requestEstimate = () => {
-    fetch("https://formsubmit.co/ajax/hic0811@gmail.com", {
+    fetch("https://formsubmit.co/ajax/369gdh@gmail.com", {
       method: "POST",
       headers: { 
           'Content-Type': 'application/json',
           'Accept': 'application/json'
       },
       body: JSON.stringify({
-          FullName: request.fullName,
+          Full_name: request.fullName,
           Email: request.email,
           PhoneNumber:request.phoneNumber,
-          LawnCutting:request.lawnCutting,
-          Interlocking:request.interlocking,
+          Lawn_cutting: request.lawn_cutting?"true":"false",
+          Interlocking: request.interlocking?"true":"false",
+          Planting_lawn: request.planting_lawn?"true":"false",
+          Backyard_cleaning:request.backyard_cleaning?"true":"false",
+          Roof_cleaning:request.roof_cleaning?"true":"false",
+          Tree_service:request.tree_service?"true":"false",
           Message: request.message
       })
     })
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.log(error));
-    console.log('request', request);
+    setRequest({
+      fullName: "",
+      email: "",
+      phoneNumber:"",
+      lawn_cutting: false,
+      interlocking: false,
+      planting_lawn: false,
+      backyard_cleaning:false,
+      roof_cleaning:false,
+      tree_service:false,
+      message: ""
+    });
   }
   return (
     <Box className={classes.root}>
@@ -238,36 +262,34 @@ function Quote() {
                           <tr>
                             <td>
                               <FormControlLabel
-                                control={<Checkbox onChange={
-                                  e => {e.target.checked?setRequest(prevState =>({...prevState,lawnCutting: "true"})):setRequest(prevState =>({...prevState,lawnCutting: "false"}))}}/>}
+                                control={<Checkbox checked={request.lawn_cutting} id="lawn_cutting" onChange={handleChange}/>}
                                 label="Lawn Cutting"/>
                             </td>
                             <td>
                               <FormControlLabel
-                                control={<Checkbox onChange={
-                                  e => {e.target.checked?setRequest(prevState =>({...prevState,interlocking: "true"})):setRequest(prevState =>({...prevState,interlocking: "false"}))}}/>}
-                                label="Interlocking"/>
+                                 control={<Checkbox checked={request.interlocking} id="interlocking" onChange={handleChange}/>}
+                                 label="Interlocking"/>
                             </td>
                             <td>
                               <FormControlLabel
-                                control={<Checkbox />}
+                                control={<Checkbox checked={request.planting_lawn} id="planting_lawn" onChange={handleChange}/>}
                                 label="Planting Lawn"/>
                             </td>
                           </tr>
                           <tr>
                             <td>
                               <FormControlLabel
-                                control={<Checkbox />}
-                                label="Backyard Cleanup"/>
+                                control={<Checkbox checked={request.backyard_cleaning} id="backyard_cleaning" onChange={handleChange}/>}
+                                label="Backyard Cleaning"/>
                             </td>
                             <td>
                               <FormControlLabel
-                                control={<Checkbox />}
-                                label="Roofing Cleanup"/>
+                                control={<Checkbox checked={request.roof_cleaning} id="roof_cleaning" onChange={handleChange}/>}
+                                label="Roof Cleaning"/>
                             </td>
                             <td>
                               <FormControlLabel
-                                control={<Checkbox />}
+                                control={<Checkbox checked={request.tree_service} id="tree_service" onChange={handleChange}/>}
                                 label="Tree Service"/>
                             </td>
                           </tr>

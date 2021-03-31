@@ -64,6 +64,7 @@ function MyTextField(prop) {
                 InputProps={prop.InputProps}
                 autoFocus={prop.autoFocus}
                 type={prop.type}
+                value={prop.value}
                 helperText={prop.helperText}
                 onChange={prop.onChange}>
             </TextField>
