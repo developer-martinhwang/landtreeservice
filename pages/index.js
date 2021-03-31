@@ -25,11 +25,13 @@ export default function Home() {
           title="Lawn Cutting"
           subtitle="When you get weekly grass cutting services from Landtree Service, you will appreciate your great looking property, and enjoy more time to relax."
           image="/lawnCutting.jpg"
+          flexDirection="row"
         />
          <StoryCard
           title="Roof Cleaning up"
           subtitle="The entire roof is cleaned with a pressure washer using low pressure and high volume."
           image="/cleanRoof.jpg"
+          flexDirection="row-reverse"
         />
         <Quote/>
       </main>

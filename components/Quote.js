@@ -8,9 +8,9 @@
  * - March 24, 2021, developer Martin Hwang < developer.martinhwang@gmail.com >
  *   : created
  */
-import React from "react";
+import React, {useState}from "react";
 // material-ui core
-import {Box, Container, Paper, Button, FormGroup, FormLabel, FormControlLabel, Checkbox } from "@material-ui/core";
+import {Box, Container, Button, FormGroup, FormControlLabel, Checkbox } from "@material-ui/core";
 // material-ui style
 import {makeStyles} from "@material-ui/styles";
 // components
@@ -133,12 +133,41 @@ const useStyles = makeStyles({
 })
 function Quote() {
   const classes = useStyles();
+  const [request, setRequest] = useState({
+    fullName: "",
+    email: "",
+    phoneNumber:"",
+    lawnCutting: "",
+    interlocking: "",
+    message: ""
+  });
   const handleChange = (e) => {
     const {id, value} = e.target;
-    // setUser(prevState => ({
-    //   ...prevState,
-    //   [id]: value
-    // }));
+    setRequest(prevState => ({
+      ...prevState,
+      [id]: value
+    }));
+  }
+  const requestEstimate = () => {
+    fetch("https://formsubmit.co/ajax/hic0811@gmail.com", {
+      method: "POST",
+      headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+          FullName: request.fullName,
+          Email: request.email,
+          PhoneNumber:request.phoneNumber,
+          LawnCutting:request.lawnCutting,
+          Interlocking:request.interlocking,
+          Message: request.message
+      })
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log(error));
+    console.log('request', request);
   }
   return (
     <Box className={classes.root}>
@@ -158,12 +187,12 @@ function Quote() {
                       margin="normal"
                       required={true}
                       fullWidth={true}
-                      id="quote_name"
+                      id="fullName"
                       label="Full Name"
                       type="text"
                       // helperText={errors.name}
-                      name="quote_name"
-                      // value={user.name}
+                      // name="fullName"
+                      value={request.fullName}
                       onChange={handleChange}/>
                   </p>
                   <div className={classes.contact}>
@@ -173,12 +202,12 @@ function Quote() {
                         margin="normal"
                         required={true}
                         fullWidth={true}
-                        id="quote_email"
+                        id="email"
                         label="Email Address"
                         type="email"
                         // helperText={errors.email}
-                        name="quote_email"
-                        // value={user.email}
+                        // name="email"
+                        value={request.email}
                         autoComplete="email"
                         onChange={handleChange}/>
                     </p>
@@ -188,12 +217,12 @@ function Quote() {
                         margin="normal"
                         required={true}
                         fullWidth={true}
-                        id="quote_phone_number"
+                        id="phoneNumber"
                         label="Phone Number"
                         type="text"
                         // helperText={errors.email}
-                        name="quote_phone_number"
-                        // value={user.email}
+                        // name="phoneNumber"
+                        value={request.phoneNumber}
                         onChange={handleChange}/>
                     </p>
                   </div>
@@ -209,34 +238,36 @@ function Quote() {
                           <tr>
                             <td>
                               <FormControlLabel
-                                control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                                control={<Checkbox onChange={
+                                  e => {e.target.checked?setRequest(prevState =>({...prevState,lawnCutting: "true"})):setRequest(prevState =>({...prevState,lawnCutting: "false"}))}}/>}
                                 label="Lawn Cutting"/>
                             </td>
                             <td>
                               <FormControlLabel
-                                control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                                control={<Checkbox onChange={
+                                  e => {e.target.checked?setRequest(prevState =>({...prevState,interlocking: "true"})):setRequest(prevState =>({...prevState,interlocking: "false"}))}}/>}
                                 label="Interlocking"/>
                             </td>
                             <td>
                               <FormControlLabel
-                                control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                                control={<Checkbox />}
                                 label="Planting Lawn"/>
                             </td>
                           </tr>
                           <tr>
                             <td>
                               <FormControlLabel
-                                control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                                control={<Checkbox />}
                                 label="Backyard Cleanup"/>
                             </td>
                             <td>
                               <FormControlLabel
-                                control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                                control={<Checkbox />}
                                 label="Roofing Cleanup"/>
                             </td>
                             <td>
                               <FormControlLabel
-                                control={<Checkbox onChange={handleChange} name="tree_removal" />}
+                                control={<Checkbox />}
                                 label="Tree Service"/>
                             </td>
                           </tr>
@@ -249,22 +280,23 @@ function Quote() {
                       variant="outlined"
                       margin="normal"
                       fullWidth={true}
-                      id="quote_message"
+                      id="message"
                       label="How can we help you?"
                       type="text"
                       // helperText={errors.email}
-                      name="quote_message"
-                      // value={user.email}
+                      // name="quote_message"
+                      value={request.message}
                       InputProps={{
                         className: classes.message
                       }}
                       onChange={handleChange}/>
                   </p>
                   <Button
-                    type="submit"
+                    // type="submit"
                     // fullWidth
                     variant="contained"
-                    className={classes.requestButton}>
+                    className={classes.requestButton}
+                    onClick={requestEstimate}>
                     Request Free Estimate
                   </Button>
                 </form>
