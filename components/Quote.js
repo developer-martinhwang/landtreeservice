@@ -15,6 +15,7 @@ import {Box, Container, Button, FormGroup, FormControlLabel, Checkbox } from "@m
 import {makeStyles} from "@material-ui/styles";
 // components
 import MyTextField from "../components/tags/MyTextField"
+import MyDialog from '../components/tags/MyDialog'
 const useStyles = makeStyles({
   root: {
     margin: "0",
@@ -142,6 +143,9 @@ function Quote() {
     tree_service:false,
     message: ""
   });
+  const [dialog, setDialog] = useState({
+    confrimation: false,
+  })
   const handleChange = (e) => {
     const {id, value, type, checked} = e.target;
     if(type === "text" || type ==="email"){
@@ -158,28 +162,38 @@ function Quote() {
     }
   }
   const requestEstimate = () => {
-    fetch("https://formsubmit.co/ajax/369gdh@gmail.com", {
-      method: "POST",
-      headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-          Full_name: request.fullName,
-          Email: request.email,
-          PhoneNumber:request.phoneNumber,
-          Lawn_cutting: request.lawn_cutting?"true":"false",
-          Interlocking: request.interlocking?"true":"false",
-          Planting_lawn: request.planting_lawn?"true":"false",
-          Backyard_cleaning:request.backyard_cleaning?"true":"false",
-          Roof_cleaning:request.roof_cleaning?"true":"false",
-          Tree_service:request.tree_service?"true":"false",
-          Message: request.message
+    if(request.fullName !== "" && request.email !== "" && request.phoneNumber !== ""){
+      fetch("https://formsubmit.co/ajax/369gdh@gmail.com", {
+        method: "POST",
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            Full_name: request.fullName,
+            Email: request.email,
+            PhoneNumber:request.phoneNumber,
+            Lawn_cutting: request.lawn_cutting?"true":"false",
+            Interlocking: request.interlocking?"true":"false",
+            Planting_lawn: request.planting_lawn?"true":"false",
+            Backyard_cleaning:request.backyard_cleaning?"true":"false",
+            Roof_cleaning:request.roof_cleaning?"true":"false",
+            Tree_service:request.tree_service?"true":"false",
+            Message: request.message
+        })
       })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.log(error));
+      setDialog({
+        confrimation: true
+      })
+    } 
+  }
+  const handleDialogClose = () => {
+    setDialog({
+      confrimation: false
     })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.log(error));
     setRequest({
       fullName: "",
       email: "",
@@ -193,6 +207,33 @@ function Quote() {
       message: ""
     });
   }
+  const content = (
+    <Box>
+      <Box>
+        <p>Full Name:{request.fullName}</p>
+        <p>Email:{request.email}</p>
+        <p>Phone Number:{request.phoneNumber}</p>
+        <p>Message:{request.message}</p>
+      </Box>
+    </Box>
+  )
+  const action= (
+    <Box color="#377927" fontWeight="bold">
+      <p>Thank you for your request. The professional team in Landtree Service will contact you.</p>
+    </Box>
+  )
+  const requestConfrimation = (
+    <MyDialog
+      dialogTitleActive={true}
+      dialogActionsActive={true}
+      onClose={handleDialogClose}
+      open={dialog.confrimation}
+      title={<Box fontWeight="bolder">Request Confirmation"</Box>}
+      dividers={true}
+      content={content}
+      actions={action}
+      />
+  )
   return (
     <Box className={classes.root}>
         <Container maxWidth="xl" className={classes.container}>
@@ -324,6 +365,7 @@ function Quote() {
                 </form>
               </Box>
             </Box>
+            {requestConfrimation}
         </Container>
     </Box>
   )
