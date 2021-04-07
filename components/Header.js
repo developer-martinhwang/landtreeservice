@@ -63,12 +63,12 @@ const useStyles = makeStyles({
       color: "#fff",
       fontWeight: "bold"
     },
-    '& button:nth-child(1)':{
-      backgroundColor: "#377927"
-    },
-    '& button:nth-child(2)':{
-      backgroundColor: "#792727"
-    }
+  },
+  quote: {
+    backgroundColor: "#377927"
+  },
+  service: {
+    backgroundColor: "#792727"
   },
   '@media screen and (max-width: 960px) and (min-width: 360px)': {
     paper: {
@@ -96,8 +96,8 @@ function Header() {
             <h4>Landtree Service Take Care of Your Tree Troubles</h4>
             <p>We know trees. Our professional tree experts are experienced in all types of tree care and removal, and we’re committed to the highest quality service. Let us help keep your property healthy and beautiful.</p>
             <Box className={classes.button}>
-              <Button variant="contained"><a href="#quote">REQUEST A QUOTE</a></Button>
-              <Button variant="contained">VIEW SERVICES</Button>
+              <a href="#quote"><Button className={classes.quote} variant="contained">REQUEST A QUOTE</Button></a>
+              <a href="#service"><Button className={classes.service} variant="contained">VIEW SERVICES</Button></a>
             </Box>
           </Paper>
         </Container>

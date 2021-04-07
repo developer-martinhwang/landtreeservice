@@ -61,12 +61,13 @@ function MyTextField(prop) {
                 id={prop.id}
                 label={prop.label}
                 autoComplete={prop.autoComplete}
-                InputProps={prop.InputProps}
+                inputProps={prop.InputProps}
                 autoFocus={prop.autoFocus}
                 type={prop.type}
                 value={prop.value}
                 helperText={prop.helperText}
-                onChange={prop.onChange}>
+                onChange={prop.onChange}
+                >
             </TextField>
         </Box>
     )

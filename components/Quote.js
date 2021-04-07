@@ -10,7 +10,7 @@
  */
 import React, {useState}from "react";
 // material-ui core
-import {Box, Container, Button, FormGroup, FormControlLabel, Checkbox } from "@material-ui/core";
+import {Box, Container, Button, FormGroup, FormControlLabel, Checkbox, TextField } from "@material-ui/core";
 // material-ui style
 import {makeStyles} from "@material-ui/styles";
 // components
@@ -85,7 +85,8 @@ const useStyles = makeStyles({
     padding: "0 0 0 0.1em"
   },
   message: {
-    minHeight: "10em"
+    minHeight: "10em",
+    color: "#377927",
   },
   service: {
     '& span': {
@@ -350,6 +351,7 @@ function Quote() {
                       // name="quote_message"
                       value={request.message}
                       InputProps={{
+                        maxLength: 200,
                         className: classes.message
                       }}
                       onChange={handleChange}/>
