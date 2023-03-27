@@ -136,12 +136,11 @@ function Quote() {
     fullName: "",
     email: "",
     phoneNumber:"",
-    lawn_cutting: false,
-    interlocking: false,
-    planting_lawn: false,
-    backyard_cleaning:false,
-    roof_cleaning:false,
+    address:"",
     tree_service:false,
+    backyard_cleaning:false,
+    planting_lawn: false,
+    root_stumping: false,
     message: ""
   });
   const [dialog, setDialog] = useState({
@@ -163,7 +162,7 @@ function Quote() {
     }
   }
   const requestEstimate = () => {
-    if(request.fullName !== "" && request.email !== "" && request.phoneNumber !== ""){
+    if(request.fullName !== "" && request.email !== "" && request.phoneNumber !== "" && request.address){
       fetch("https://formsubmit.co/ajax/369gdh@gmail.com", {
         method: "POST",
         headers: { 
@@ -174,12 +173,11 @@ function Quote() {
             Full_name: request.fullName,
             Email: request.email,
             PhoneNumber:request.phoneNumber,
-            Lawn_cutting: request.lawn_cutting?"true":"false",
-            Interlocking: request.interlocking?"true":"false",
-            Planting_lawn: request.planting_lawn?"true":"false",
-            Backyard_cleaning:request.backyard_cleaning?"true":"false",
-            Roof_cleaning:request.roof_cleaning?"true":"false",
+            Address:request.address,
             Tree_service:request.tree_service?"true":"false",
+            Backyard_cleaning:request.backyard_cleaning?"true":"false",
+            Planting_lawn: request.planting_lawn?"true":"false",
+            Root_stumping: request.root_stumping?"true":"false",
             Message: request.message
         })
       })
@@ -199,22 +197,24 @@ function Quote() {
       fullName: "",
       email: "",
       phoneNumber:"",
-      lawn_cutting: false,
-      interlocking: false,
-      planting_lawn: false,
-      backyard_cleaning:false,
-      roof_cleaning:false,
       tree_service:false,
+      backyard_cleaning:false,
+      planting_lawn: false,
+      root_stumping: false,
       message: ""
     });
   }
   const content = (
     <Box>
       <Box>
-        <p>Full Name:{request.fullName}</p>
-        <p>Email:{request.email}</p>
-        <p>Phone Number:{request.phoneNumber}</p>
-        <p>Message:{request.message}</p>
+        <p>Full Name: {request.fullName}</p>
+        <p>Email: {request.email}</p>
+        <p>Phone Number: {request.phoneNumber}</p>
+        <p>Address: {request.address}</p>
+        <p>Tree Service: {request.tree_service?"Yes":"No"}</p>
+        <p>Root Stumping: {request.root_stumping?"Yes":"No"}</p>
+        <p>Planting Lawn: {request.planting_lawn?"Yes":"No"}</p>
+        <p>Backyard Cleaning: {request.backyard_cleaning?"Yes":"No"}</p>
       </Box>
     </Box>
   )
@@ -269,7 +269,7 @@ function Quote() {
                         required={true}
                         fullWidth={true}
                         id="email"
-                        label="Email Address"
+                        label="Email"
                         type="email"
                         // helperText={errors.email}
                         // name="email"
@@ -292,6 +292,20 @@ function Quote() {
                         onChange={handleChange}/>
                     </p>
                   </div>
+                  <p>
+                    <MyTextField
+                      variant="outlined"
+                      margin="normal"
+                      required={true}
+                      id="address"
+                      fullWidth={true}
+                      label="Address"
+                      type="text"
+                      // helperText={errors.name}
+                      // name="address"
+                      value={request.address}
+                      onChange={handleChange}/>
+                  </p>
                   <p className={classes.service}>
                     <Box  color="#377927"
                           border = "1px solid #377927"
@@ -304,13 +318,13 @@ function Quote() {
                           <tr>
                             <td>
                               <FormControlLabel
-                                control={<Checkbox checked={request.lawn_cutting} id="lawn_cutting" onChange={handleChange}/>}
-                                label="Lawn Cutting"/>
+                                control={<Checkbox checked={request.tree_service} id="tree_service" onChange={handleChange}/>}
+                                label="Tree Service"/>
                             </td>
                             <td>
                               <FormControlLabel
-                                 control={<Checkbox checked={request.interlocking} id="interlocking" onChange={handleChange}/>}
-                                 label="Interlocking"/>
+                                 control={<Checkbox checked={request.root_stumping} id="root_stumping" onChange={handleChange}/>}
+                                 label="Root Stumping"/>
                             </td>
                             <td>
                               <FormControlLabel
@@ -323,16 +337,6 @@ function Quote() {
                               <FormControlLabel
                                 control={<Checkbox checked={request.backyard_cleaning} id="backyard_cleaning" onChange={handleChange}/>}
                                 label="Backyard Cleaning"/>
-                            </td>
-                            <td>
-                              <FormControlLabel
-                                control={<Checkbox checked={request.roof_cleaning} id="roof_cleaning" onChange={handleChange}/>}
-                                label="Roof Cleaning"/>
-                            </td>
-                            <td>
-                              <FormControlLabel
-                                control={<Checkbox checked={request.tree_service} id="tree_service" onChange={handleChange}/>}
-                                label="Tree Service"/>
                             </td>
                           </tr>
                         </table>

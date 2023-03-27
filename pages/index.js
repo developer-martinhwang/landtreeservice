@@ -23,21 +23,21 @@ export default function Home() {
         <Header/>
         <div id="service">
           <StoryCard
-            title="Lawn Cutting"
-            subtitle="When you get weekly grass cutting services from Landtree Service, you will appreciate your great looking property, and enjoy more time to relax."
-            image="/lawnCutting.jpg"
-            flexDirection="row"
+           title="Tree Service"
+           subtitle="Our experienced team will take care of all tree service sucah Arborist Service, Tree Removal, Tree Planting, Stump Removal, Tree Trimming, Tree Pruning"
+           image="/treeservice.jpg"
+           flexDirection="row"
           />
           <StoryCard
-            title="Roof Cleaning up"
-            subtitle="The entire roof is cleaned with a pressure washer using low pressure and high volume."
-            image="/cleanRoof.jpg"
+            title="Root Stumping"
+            subtitle="Do you have a unwanted tree stump on your property? We have the perfect solution for you"
+            image="/rootStump.jpeg"
             flexDirection="row-reverse"
           />
           <StoryCard
-            title="Interlock Landscaping"
-            subtitle="Interlocking stone pavers offer an amazing landscaping material for your home. They are a durable and low-maintenance alternative."
-            image="/interlocking.jpg"
+            title="Backyard Cleaning"
+            subtitle="Just relax and enjoy beautiful backyard! We will take care of your perfcet backyard."
+            image="/backyardClean.jpg"
             flexDirection="row"
           />
           <StoryCard
@@ -45,12 +45,6 @@ export default function Home() {
             subtitle="Improve the overall health of your lawn with our wide selection of lawn services."
             image="/plantinglawn.jpg"
             flexDirection="row-reverse"
-          />
-           <StoryCard
-            title="Tree Service"
-            subtitle="Our experienced team will take care of all tree service sucah Arborist Service, Tree Removal, Tree Planting, Stump Removal, Tree Trimming, Tree Pruning"
-            image="/treeservice.jpg"
-            flexDirection="row"
           />
         </div>
         <Quote/>
